@@ -1,0 +1,74 @@
+<% title "Products" %>
+
+<div class="col-lg-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <%= link_to "Add Product", new_admin_product_path, class: "btn btn-outline-primary float-right" %>
+                   <h4 class="card-title">Products List</h4>
+                  <div class="table-responsive">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>
+                            Preview
+                          </th>
+                          <th>
+                            Name
+                          </th>
+                          <th>
+                            Stock
+                          </th>
+                          <th>
+                            Price
+                          </th>
+                           <th>
+                            Categories
+                          </th>
+                          <th>
+                            Date Published
+                          </th>
+                           <th>
+                            Link
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <% @products.each do |product| %>
+                              <tr>
+                                <td>
+                                  <% if product.image.blank? %>
+                                    <%= image_tag product.image %>
+                                  <% else %>
+                                    <%= image_tag "https://image.jimcdn.com/app/cms/image/transf/none/path/s8e84ffc7090a5bd2/image/i9eed849b0f18dd36/version/1534159621/image.png" %>
+                                  <% end %> 
+                                </td>
+                                <td>
+                                  <%= product.name %>
+                                </td>
+                                <td>
+                                  <%= product.stock %>
+                                </td>
+                                <td>
+                                  €<%= product.price %>
+                                </td>
+                                <td>
+                                 <% product.categories.each do |category| %>
+                                   <%= category.name %><br>
+                                 <% end %>
+                                </td>
+                                <td>
+                                  <%= product.created_at.strftime("%b %e, %Y") %>
+                                </td>
+                                <td>
+                                  <%= link_to edit_admin_product_path(product.id)  do%>
+                                  Edit
+                                  <% end %>
+                                </td>
+                            </tr>
+                        <% end %>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>

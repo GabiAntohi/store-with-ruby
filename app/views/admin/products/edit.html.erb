@@ -1,0 +1,50 @@
+<% title "Edit " + @product.name  %>
+
+<div class="col-md-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Edit <%= @product.name %></h4>
+                  <p class="card-description">
+                    Use the form below to edit information about the <%= @product.name %> 
+                  </p>
+                  <%= form_for [:admin, @product], class: "forms-sample"  do |f| %>
+                    <div class="form-group">
+                      <%= f.label :name %>
+                      <%= f.text_field :name, class: "form-control" %>
+                    </div>
+                    <div class="form-group">
+                      <%= f.label :description %>
+                      <%= f.text_area :description, class: "form-control", size: "20" %>
+                    </div>
+                    <div class="form-group">
+                      <%= f.label :stock %>
+                      <%= f.number_field :stock, class: "form-control", min:0, step: 1 %>
+                    </div>
+                    <div class="form-group">
+                        <%= f.label :price %>
+                        <div class="input-group">
+                          <div class="input-group-prepend bg-primary border-primary">
+                            <span class="input-group-text bg-transparent text-white">€</span>
+                          </div>
+                          <%= f.text_field :price, class: "form-control" %>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                      <%= f.label :artist_name %>
+                      <%= f.text_field :artist_name, class: "form-control" %>
+                    </div>
+                    <div class="form-group">
+                      <%= f.label :image %>
+                      <%= f.file_field :image, class: "form-control" %>
+                    </div>
+                    <div class="form-group">
+                      <%= f.label :sku, "SKU" %>
+                      <%= f.text_field :sku, class: "form-control" %>
+                    </div>
+                    
+                    <%= f.submit class: "btn btn-success mr-2" %>
+                    
+                  <% end %>
+                </div>
+              </div>
+            </div>

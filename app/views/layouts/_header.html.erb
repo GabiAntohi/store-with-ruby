@@ -1,0 +1,75 @@
+    <header class="header_area">
+        <div class="classy-nav-container breakpoint-off d-flex align-items-center justify-content-between">
+            <!-- Classy Menu -->
+            <nav class="classy-navbar" id="essenceNav">
+                <!-- Logo link for index page needed here -->
+              <%= link_to "ChatNoir", root_path, class: "nav-brand" %> 
+                <!-- Navbar Toggler -->
+                <div class="classy-navbar-toggler">
+                    <span class="navbarToggler"><span></span><span></span><span></span></span>
+                </div>
+                <!-- Menu -->
+                <div class="classy-menu">
+                    <!-- close btn -->
+                    <div class="classycloseIcon">
+                        <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                    </div>
+                    <!-- Nav Start -->
+                    <div class="classynav">
+                        <ul>
+                            <li><a href="#">Shop</a>
+                                <ul class="dropdown">
+                                    <li><a href="#">Posters</a></li>
+                                    <li><a href="#">Illustrations</a></li>
+                                    <li><a href="#">Woodblock Prints</a></li>
+                                </ul>
+                            </li>
+                          
+                            <li><%= link_to "About", about_path%></li>
+                            <li><%= link_to "Contact", '#' %></li>
+                         
+                          
+                        </ul>
+                    </div>
+                    <!-- Nav End -->
+                </div>
+            </nav>
+            <!-- Header Meta Data -->
+            <div class="header-meta d-flex clearfix justify-content-end">
+                <!-- Search Area -->
+            
+                <div class="search-area">
+                    <form action="#" method="post">
+                        <input type="search" name="search" id="headerSearch" placeholder="Type for search">
+                        <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    </form>
+                </div>
+                <!-- User Login Info -->
+              
+                <div class="user-login-info">
+                  <div class="drop">
+                      <a class="dropbt href="#"><%= image_tag "core-img/user.svg" %></a>
+                        <div class="drop-content">
+                          <!-- if the current user is logged in and an admin they will be able to access the dashboard-->
+                          <%if current_user && current_user.admin?%>
+                            <%= link_to "Dashboard", admin_dashboard_path %>
+                            <%end%>
+                           <!-- once on chatnoir.eu there will be 3 levels of user and based on this the dropdown configuration will change-->
+                          <% if user_signed_in? %>
+                            <%= link_to "Profile", edit_user_registration_path %>
+                            <%= link_to "Log out", destroy_user_session_path, :method => :delete %>
+                              <% else %>
+                          <%= link_to "Log in", new_user_session_path %>
+                          <%= link_to "Register", new_user_registration_path %>
+                          <% end %>
+                        </div>
+                  </div>
+                </div>
+                <!-- Cart Area -->
+                <div class="cart-area">
+                    <a href="#" id="essenceCartBtn"><%= image_tag "core-img/bag.svg" %><span>3</span></a>
+                </div>
+            </div>
+        </div>
+    </header>
+

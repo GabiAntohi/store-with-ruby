@@ -1,0 +1,36 @@
+<%title "Order"  %>
+
+<div class="row">
+            <div class="col-md-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Order Details</h4>
+                  <h5>Name</h5>
+                  <p>{User Name}</p>
+                  <h5>Order Number</h5>
+                  <p><%= @order.order_number %></p>
+                  <h5>Delivery Address</h5>
+                  <p><%= @order.delivery_address %></p>
+                  <h5>Payment Method</h5>
+                  <p><%= @order.payment_method %></p>
+                  <h5>Date</h5>
+                  <p><%= @order.created_at.strftime("%b %e, %Y") %></p>
+                  <h5>Note</h5>
+                  <p><%= @order.note %></p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Order Items</h4>
+                  <h5>{product name}</h5>
+                  <p>{product variant - if applicable}</p>
+                  <p>{Product Quantity}</p>
+                  <p>{product price}</p>
+                  
+                  <h5>€<%= @order.total_price %></h5></h5>
+                </div>
+              </div>
+            </div>
+          </div>

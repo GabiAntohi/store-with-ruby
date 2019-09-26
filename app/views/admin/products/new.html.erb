@@ -1,0 +1,74 @@
+<% title "Create New Product" %>
+<div class="row">
+  <div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Add Product</h4>
+          <p class="card-description">
+            Use the form below to add information about the product 
+          </p>
+          
+          <%= form_for [:admin, @product], class: "forms-sample"  do |f| %>
+            <div class="form-group">
+              <%= f.label :name %>
+              <%= f.text_field :name, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :description %>
+              <%= f.text_area :description, class: "form-control", size: "20" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :stock %>
+              <%= f.number_field :stock, class: "form-control", min:0, step: 1 %>
+            </div>
+            <div class="form-group">
+                <%= f.label :price %>
+                <div class="input-group">
+                  <div class="input-group-prepend bg-primary border-primary">
+                    <span class="input-group-text bg-transparent text-white">€</span>
+                  </div>
+                  <%= f.text_field :price, class: "form-control" %>
+                </div>
+            </div>
+            <div class="form-group">
+              <%= f.label :artist_name %>
+              <%= f.text_field :artist_name, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :image %>
+              <%= f.file_field :image, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :sku, "SKU" %>
+              <%= f.text_field :sku, class: "form-control" %>
+            </div>
+            
+            <%= f.submit class: "btn btn-success mr-2" %>
+            
+          <% end %>
+          
+        </div>
+      </div>
+  </div>
+  
+  <% if @product.errors.any? %>
+  
+  <div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title .text-warning">Errors</h4>
+        <p>
+          Please fix any errors outlined below and re-submit your product
+        </p>
+        <ul class="list-arrow">
+          <% @product.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+          <% end%>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+ 
+                  

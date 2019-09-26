@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title> Chatnoir -<%= content_for?(:title) ? yield(:title) : 'The Biggest Online Store on Earth' %> </title>
+  <!-- plugins:css -->
+  <%= stylesheet_link_tag 'admin' %>
+  <!--<link rel="stylesheet" href="vendors/iconfonts/mdi/css/materialdesignicons.min.css">-->
+  <!--<link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">-->
+  <!--<link rel="stylesheet" href="vendors/css/vendor.bundle.addons.css">-->
+  <!-- endinject -->
+  <!-- plugin css for this page -->
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <!--<link rel="stylesheet" href="css/style.css">-->
+  <!-- endinject -->
+  <link rel="shortcut icon" href="images/favicon.png" />
+</head>
+
+<body>
+  <div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+    <%= render "admin/dashboard/partials/nav" %>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:partials/_sidebar.html -->
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <ul class="nav">
+          <li class="nav-item nav-profile">
+            <div class="nav-link">
+              <div class="user-wrapper">
+                <div class="profile-image">
+                  <%= image_tag('faces/face1') %>
+                </div>
+                <div class="text-wrapper">
+                  <p class="profile-name">Richard V.Welsh</p>
+                  <div>
+                    <small class="designation text-muted">Administrator</small>
+                    <span class="status-indicator online"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item">
+            <%= link_to admin_dashboard_path, class: "nav-link" do %>
+              <i class="menu-icon mdi mdi-television"></i>
+              <span class="menu-title">Dashboard</span>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#products" aria-expanded="false" aria-controls="ui-basic">
+              <i class="menu-icon mdi mdi-content-copy"></i>
+              <span class="menu-title">Products</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="products">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item">
+                  <%= link_to "Index", admin_products_path, class: "nav-link" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "Add Product", new_admin_product_path, class: "nav-link" %>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#orders" aria-expanded="false" aria-controls="ui-basic">
+              <i class="menu-icon mdi mdi-content-copy"></i>
+              <span class="menu-title">Orders</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="orders">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item">
+                  <%= link_to "Index", admin_orders_path, class: "nav-link" %>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="pages/forms/basic_elements.html">
+              <i class="menu-icon mdi mdi-backup-restore"></i>
+              <span class="menu-title">Form elements</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+          
+          <% flash.each do |name, msg| %>
+            <div class="col-md-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title"><%= name %></h4>
+                  <p><%= msg %></p>
+                </div>
+              </div>
+            </div>  
+          <% end %>
+          
+          <%= yield %>
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:partials/_footer.html -->
+        <footer class="footer">
+          <div class="container-fluid clearfix">
+            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2018
+              <a href="http://www.bootstrapdash.com/" target="_blank">Bootstrapdash</a>. All rights reserved.</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with
+              <i class="mdi mdi-heart text-danger"></i>
+            </span>
+          </div>
+        </footer>
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    
+  <%= javascript_include_tag "admin" %>
+  <!-- plugins:js -->
+  
+  <!--<script src="vendors/js/vendor.bundle.base.js"></script>-->
+  <!--<script src="vendors/js/vendor.bundle.addons.js"></script>-->
+  <!-- endinject -->
+  <!-- Plugin js for this page-->
+  <!-- End plugin js for this page-->
+  <!-- inject:js -->
+  <!--<script src="js/off-canvas.js"></script>-->
+  <!--<script src="js/misc.js"></script>-->
+  <!-- endinject -->
+  <!-- Custom js for this page-->
+  <!--<script src="js/dashboard.js"></script>-->
+  <!-- End custom js for this page-->
+</body>
+
+</html>
